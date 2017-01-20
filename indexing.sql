@@ -40,7 +40,6 @@ SELECT * FROM "car_models"
   --59.614ms
 
 CREATE INDEX "car_index" ON "car_models" ("make_code");
-CREATE INDEX "car_index" ON "car_models" ("year");
 
 SELECT DISTINCT "make_title" FROM "car_models"
   WHERE "make_code" = 'LAM';
