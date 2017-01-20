@@ -21,39 +21,43 @@ CREATE DATABASE "indexed_cars" OWNER "indexed_cars_user";
 
 SELECT DISTINCT "make_title" FROM "car_models"
   WHERE "make_code" = 'LAM';
-  --26.491
+  --32.809
 
 SELECT DISTINCT "model_title" FROM "car_models"
   WHERE "make_code" = 'NISSAN' AND "model_code" = 'GT-R';
-  --26.602ms
+  --21.787ms
 
 SELECT "make_code", "model_code", "model_title", "year" FROM "car_models"
   WHERE "make_code" = 'LAM';
-  --21.363ms
+  --27.356ms
 
 SELECT * FROM "car_models"
   WHERE "year" BETWEEN '2010' AND '2015';
-  --94.190ms
+  --84.431ms
 
 SELECT * FROM "car_models"
   WHERE "year" = '2010';
-  --41.953ms
+  --59.614ms
 
-CREATE INDEX "car_models_index"
-  ON "indexed_cars";
+CREATE INDEX "car_index" ON "car_models" ("make_code");
+CREATE INDEX "car_index" ON "car_models" ("year");
 
+SELECT DISTINCT "make_title" FROM "car_models"
+  WHERE "make_code" = 'LAM';
+  --1.239ms
 
--- SELECT DISTINCT "make_title" FROM "car_models"
---   WHERE "make_code" = 'LAM';
+SELECT DISTINCT "model_title" FROM "car_models"
+  WHERE "make_code" = 'NISSAN' AND "model_code" = 'GT-R';
+  --1.728ms
 
--- SELECT DISTINCT "model_title" FROM "car_models"
---   WHERE "make_code" = 'NISSAN' AND "model_code" = 'GT-R';
+SELECT "make_code", "model_code", "model_title", "year" FROM "car_models"
+  WHERE "make_code" = 'LAM';
+  --1.128ms
 
--- SELECT "make_code", "model_code", "model_title", "year" FROM "car_models"
---   WHERE "make_code" = 'LAM';
+SELECT * FROM "car_models"
+  WHERE "year" BETWEEN '2010' AND '2015';
+  --83.950ms
 
--- SELECT * FROM "car_models"
---   WHERE "year" BETWEEN '2010' AND '2015';
-
--- SELECT * FROM "car_models"
---   WHERE "year" = '2010';
+SELECT * FROM "car_models"
+  WHERE "year" = '2010';
+  --37.803
