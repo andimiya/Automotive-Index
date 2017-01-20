@@ -38,25 +38,3 @@ SELECT * FROM "car_models"
 SELECT * FROM "car_models"
   WHERE "year" = '2010';
   --59.614ms
-
-CREATE INDEX "car_index" ON "car_models" ("make_code");
-
-SELECT DISTINCT "make_title" FROM "car_models"
-  WHERE "make_code" = 'LAM';
-  --1.239ms
-
-SELECT DISTINCT "model_title" FROM "car_models"
-  WHERE "make_code" = 'NISSAN' AND "model_code" = 'GT-R';
-  --1.728ms
-
-SELECT "make_code", "model_code", "model_title", "year" FROM "car_models"
-  WHERE "make_code" = 'LAM';
-  --1.128ms
-
-SELECT * FROM "car_models"
-  WHERE "year" BETWEEN '2010' AND '2015';
-  --83.950ms
-
-SELECT * FROM "car_models"
-  WHERE "year" = '2010';
-  --37.803

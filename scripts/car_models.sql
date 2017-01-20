@@ -1,4 +1,5 @@
 -- db indexed_cars
+CREATE INDEX "car_index" ON "car_models" ("make_code");
 
 CREATE TABLE IF NOT EXISTS car_models
 (
@@ -10,3 +11,4 @@ CREATE TABLE IF NOT EXISTS car_models
  year integer NOT NULL,
  PRIMARY KEY (id)
 )
+
